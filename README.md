@@ -1,4 +1,4 @@
-# decode-frontend
+# {DE}code - desafio frontend
 WIP :construction_worker:
 
 ## Project setup
