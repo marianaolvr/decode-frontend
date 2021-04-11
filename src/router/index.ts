@@ -12,7 +12,7 @@ const routes: Array<RouteConfig> = [
     component: User,
   },
   {
-    path: '/edit',
+    path: '/user/edit',
     name: 'Edit',
     component: Edit,
   },
