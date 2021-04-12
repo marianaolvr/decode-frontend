@@ -11,21 +11,19 @@
       </v-toolbar-title>
     </v-app-bar>
 
-    <v-main class="grey lighten-3">
+    <v-main>
       <v-container>
-
         <v-navigation-drawer v-model="drawer" clipped app>
           <v-sheet rounded="lg">
             <SideBar v-model="drawer" clipped app />
           </v-sheet>
         </v-navigation-drawer>
 
-        <v-row>
+        <v-row class="mt-16">
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
-              class="d-flex justify-center align-center flex-row mb-6 mt-16"
             >
               <router-view />
             </v-sheet>
@@ -35,6 +33,13 @@
     </v-main>
   </v-app>
 </template>
+
+<style>
+main {
+  background-image: url('./assets/wallpaper.png');
+  background-size: cover;
+}
+</style>
 
 <script>
 import SideBar from '@/components/SideBar.vue';
