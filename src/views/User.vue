@@ -110,6 +110,18 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Sobre mim</h2>
               </div>
+              <div class="my-10">
+                <label :style="{ color: $vuetify.theme.themes.light.text }">
+                  Um pouco sobre mim
+                </label>
+                <v-textarea
+                    solo
+                    name="about"
+                    class="mt-5"
+                  ></v-textarea>
+                  <v-btn elevation="2" small rounded color="primary" class="mr-3">Salvar</v-btn>
+                  <v-btn elevation="2" small rounded color="primary">Cancelar</v-btn>
+              </div>
             </v-card>
 
             <v-divider class="my-2"></v-divider>
