@@ -21,7 +21,8 @@
 
         <v-row class="mt-16">
           <v-col>
-            <v-sheet
+            <v-sheet style="position: relative; display: block;"
+
               min-height="70vh"
               rounded="lg"
             >

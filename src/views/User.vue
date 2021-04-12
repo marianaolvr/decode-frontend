@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="top">
-        <v-avatar size="80" style="position: absolute; top: 45px; left: 50px;">
+        <v-avatar size="80" style="position: absolute; top: -35px; left: 45px;">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar>
         <h2 class="font-weight-light pt-13 pb-10 px-8"
@@ -10,51 +10,72 @@
       </div>
       <v-row class="d-flex">
         <v-col md="4" class="nav d-flex justify-end">
-            <v-list class="text-right">
-              <v-list-item-group color="primary">
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Informações de Contato</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+          <v-navigation-drawer>
+            <v-navigation-content>
+              <v-list class="text-right">
+                <v-list-item-group color="primary">
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        <a class="text-decoration-none"
+                        href="#contact">Informações de Contato</a>
+                        </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      Sobre mim</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                      <a class="text-decoration-none"
+                      href="#about" style="all: unset;">Sobre mim</a>
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Projetos</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        <a class="text-decoration-none"
+                        href="#projects" style="all: unset;">Projetos</a>
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Habilidades e experiência</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        <a class="text-decoration-none"
+                        href="#experiences" style="all: unset;">Habilidades e experiência</a>
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Universidade e formação</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        <a class="text-decoration-none"
+                        href="#degree" style="all: unset;">Universidade e formação</a>
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Interesses e hobbie</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        <a class="text-decoration-none"
+                        href="#hobbies" style="all: unset;">Interesses e hobbies</a>
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-navigation-content>
+          </v-navigation-drawer>
         </v-col>
 
-        <v-col md="8" class="content" style="height: 500px; overflow-y: scroll">
+        <v-col md="8" class="content" style="max-height: 300px; overflow-y: scroll">
 
-          <v-card elevation="0">
+          <v-card elevation="0" id="contact">
             <div class="d-flex align-center">
               <v-avatar size="40" color="primary" class="mr-2">
                 <v-icon
@@ -80,7 +101,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0">
+            <v-card elevation="0" id="about">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -93,7 +114,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0">
+            <v-card elevation="0" id="projects">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -106,7 +127,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0">
+            <v-card elevation="0" id="experiences">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -119,7 +140,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0">
+            <v-card elevation="0" id="degree">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -132,7 +153,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0">
+            <v-card elevation="0" id="hobbies">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
