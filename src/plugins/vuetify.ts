@@ -19,7 +19,7 @@ export default new Vuetify({
         subtitles: colors.blue.darken1,
         header: colors.blueGrey.darken4,
         icons: colors.blue.darken4,
-        anchor: colors.blue.darken1,
+        anchor: colors.grey.darken3,
       },
     },
   },
