@@ -6,12 +6,10 @@
         </v-avatar>
         <h2 class="font-weight-light pt-13 pb-10 px-8"
           :style="{ color: $vuetify.theme.themes.light.subtitles }"
-        ><a
-        class="text-decoration-none"
-        href="/user"
+        ><a text-decoration-none
         :style="{ color: $vuetify.theme.themes.light.subtitles }">
         {{ user.name.first }}
-        </a> <strong> > Editar Perfil </strong></h2>
+        </a><strong><v-icon>mdi-chevron-right</v-icon>Editar Perfil</strong></h2>
       </div>
       <v-row class="d-flex">
         <v-col md="4" class="nav d-flex justify-end">
@@ -19,56 +17,11 @@
             <v-navigation-content>
               <v-list class="text-right">
                 <v-list-item-group color="primary">
-                  <v-list-item>
+                  <v-list-item v-for="section of sections" :key="section.tag">
                     <v-list-item-content>
                       <v-list-item-title>
-                        <a class="text-decoration-none"
-                        href="#contact">Informações de Contato</a>
-                        </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                      <a class="text-decoration-none"
-                      href="#about" style="all: unset;">Sobre mim</a>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <a class="text-decoration-none"
-                        href="#projects" style="all: unset;">Projetos</a>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <a class="text-decoration-none"
-                        href="#experiences" style="all: unset;">Habilidades e experiência</a>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <a class="text-decoration-none"
-                        href="#degree" style="all: unset;">Universidade e formação</a>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <a class="text-decoration-none"
-                        href="#hobbies" style="all: unset;">Interesses e hobbies</a>
+                      <a text-decoration-none
+                      :href="section.tag" style="all: unset;">{{ section.title }}</a>
                       </v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
@@ -207,11 +160,20 @@ export default Vue.extend({
   data() {
     return {
       userProfile: [],
+      sections: [
+        { tag: '#contact', title: 'Informações de contato' },
+        { tag: '#about', title: 'Sobre mim' },
+        { tag: '#projects', title: 'Projetos' },
+        { tag: '#experiences', title: 'Habilidades e experiência' },
+        { tag: '#degree', title: 'Universidade e formação' },
+        { tag: '#hobbies', title: 'Interesses e hobbies' },
+      ],
     };
   },
   mounted() {
     mainUser.getUser().then((response) => {
       this.userProfile = response.data.results;
+      console.log(this.userProfile);
     }).catch((error) => {
       console.log(error);
     });

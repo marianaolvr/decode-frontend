@@ -4,7 +4,9 @@
     <v-list id="other-users" color="transparent">
         <v-list-item link to="/user">
           <v-avatar size="30" class="mr-5">
-            <img v-bind:src="profilePicture" alt="user profile pic" />
+            <img
+              :src="profilePicture"
+              :alt="userName" />
           </v-avatar>
         <v-list-item-content>
           <v-list-item-title :style="{ color: $vuetify.theme.themes.light.text }">
@@ -40,7 +42,9 @@
 
       <v-list-item v-for="user of usersList" :key="user.id" link>
           <v-avatar size="30" class="mr-5">
-            <img v-bind:src="user.picture.medium" alt="user profile pic" />
+            <img
+              :src="user.picture.medium"
+              :alt="user.name.first" />
           </v-avatar>
         <v-list-item-content>
           <v-list-item-title :style="{ color: $vuetify.theme.themes.light.text }">
@@ -64,20 +68,36 @@ export default Vue.extend({
     return {
       usersList: [],
       profilePicture: '',
+      userName: '',
     };
   },
   mounted() {
-    usersService.get('/?results=5').then((response) => {
-      this.usersList = response.data.results;
-    }).catch((error) => {
-      console.log(error);
-    });
-
-    mainUser.getUser().then((response) => {
-      this.profilePicture = response.data.results[0].picture.medium;
-    }).catch((error) => {
-      console.log(error);
-    });
+    this.getUsers();
+    this.getPicture();
+  },
+  methods: {
+    getUsers() {
+      usersService.get('/?results=5')
+        .then((response) => {
+          this.usersList = response.data.results;
+        }).catch((error) => {
+          this.errorHandler();
+          console.log(error);
+        });
+    },
+    getPicture() {
+      mainUser.getUser()
+        .then((response) => {
+          this.profilePicture = response.data.results[0].picture.medium;
+          this.userName = response.data.results[0].name.first;
+        }).catch((error) => {
+          this.errorHandler();
+          console.log(error);
+        });
+    },
+    errorHandler() {
+      alert('Ops, algo deu errado. Tente atualizar a página!');
+    },
   },
 });
 </script>
