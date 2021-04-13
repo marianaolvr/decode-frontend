@@ -1,26 +1,21 @@
 <template>
   <div>
-    <v-layout justify-center class="d-flex flex-column text-center my-10">
-      <div class="mx-auto text-center">
-        <v-avatar size="100">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
-        <h3>{{ user.name }}</h3>
-        <h5 class="subtitle-1">{{ user.role }} at {{ user.company }}</h5>
-        <h4 class="font-italic subtitle-2">{{ user.city }} | {{ user.uf }} </h4>
-      </div>
+
+    <v-list id="other-users" color="transparent">
+        <v-list-item link to="/user">
+          <v-avatar size="30" class="mr-5">
+            <img v-bind:src="profilePicture" alt="user profile pic" />
+          </v-avatar>
+        <v-list-item-content>
+          <v-list-item-title :style="{ color: $vuetify.theme.themes.light.text }">
+            Meu perfil
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+    <v-layout justify-start class=" ml-4 my-4">
       <div>
-        <v-btn class="my-3"
-          elevation="2"
-          small
-          rounded
-          color="primary"
-          to="/user"
-          :style="{ width: '142px' }"
-        >
-          Meu Perfil
-        </v-btn>
-                <v-btn
+        <v-btn
           elevation="2"
           small
           rounded
@@ -33,9 +28,8 @@
       </div>
     </v-layout>
 
-    <v-divider class="my-2"></v-divider>
+      <v-divider class="my-2"></v-divider>
 
-    <v-list id="other-users" color="transparent">
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title :style="{ color: $vuetify.theme.themes.light.subtitles }">
@@ -44,13 +38,13 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item v-for="n in 5" :key="n" link>
+      <v-list-item v-for="user of usersList" :key="user.id" link>
           <v-avatar size="30" class="mr-5">
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+            <img v-bind:src="user.picture.medium" alt="user profile pic" />
           </v-avatar>
         <v-list-item-content>
           <v-list-item-title :style="{ color: $vuetify.theme.themes.light.text }">
-            Usuário {{ n }}
+            {{ user.name.first }} {{ user.name.last }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -61,16 +55,29 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import usersService from '../services/usersService';
+import mainUser from '../services/mainUser';
 
 export default Vue.extend({
-  data: () => ({
-    user: {
-      name: 'Mariana Oliveira',
-      company: 'Sinch',
-      role: 'Developer',
-      city: 'São Paulo',
-      uf: 'SP',
-    },
-  }),
+  name: 'User',
+  data() {
+    return {
+      usersList: [],
+      profilePicture: '',
+    };
+  },
+  mounted() {
+    usersService.get('/?results=5').then((response) => {
+      this.usersList = response.data.results;
+    }).catch((error) => {
+      console.log(error);
+    });
+
+    mainUser.getUser().then((response) => {
+      this.profilePicture = response.data.results[0].picture.medium;
+    }).catch((error) => {
+      console.log(error);
+    });
+  },
 });
 </script>
