@@ -41,24 +41,17 @@ export default Vue.extend({
     };
   },
   computed: {
-    form(): Vue & { validate: () => boolean, reset: () => boolean } {
-      return this.$refs.form as Vue & { validate: () => boolean, reset: () => boolean };
+    form(): Vue & { reset: () => boolean } {
+      return this.$refs.form as Vue & { reset: () => boolean };
     },
   },
   mounted() {
-    if (localStorage.getItem('projectsList')) {
-      try {
-        this.projectsList = JSON.parse(localStorage.getItem('projectsList') || '{}');
-      } catch (e) {
-        localStorage.removeItem('projectsList');
-      }
-    }
+    this.getProjectList();
   },
   methods: {
     save() {
       if (this.project.length > 0) {
         this.projectsList.push(this.project);
-        console.log(this.projectsList);
         this.form.reset();
         this.saveStorage();
       }
@@ -70,6 +63,15 @@ export default Vue.extend({
     saveStorage() {
       const parsed = JSON.stringify(this.projectsList);
       localStorage.setItem('projectsList', parsed);
+    },
+    getProjectList() {
+      if (localStorage.getItem('projectsList')) {
+        try {
+          this.projectsList = JSON.parse(localStorage.getItem('projectsList') || '{}');
+        } catch (e) {
+          localStorage.removeItem('projectsList');
+        }
+      }
     },
   },
 });
