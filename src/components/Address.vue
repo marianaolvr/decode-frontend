@@ -34,6 +34,14 @@ export default Vue.extend({
       city: '',
     };
   },
+  mounted() {
+    if (localStorage.cep && localStorage.street && localStorage.number && localStorage.city) {
+      this.cep = localStorage.cep;
+      this.street = localStorage.street;
+      this.number = localStorage.number;
+      this.city = localStorage.city;
+    }
+  },
   methods: {
     search() {
       const { cep } = this;
@@ -44,7 +52,11 @@ export default Vue.extend({
     },
     save() {
       if (this.$refs.form.validate()) {
-        console.log('uhuul');
+        localStorage.cep = this.cep;
+        localStorage.street = this.street;
+        localStorage.number = this.number;
+        localStorage.city = this.city;
+        console.log('salvou');
       }
     },
   },

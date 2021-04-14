@@ -32,7 +32,7 @@
         </v-col>
 
         <v-col md="6" class="content">
-
+<Address />
           <v-card elevation="0" id="contact" v-for="user of userProfile" :key="user.id">
             <div class="d-flex align-center">
               <v-avatar size="40" color="primary" class="mr-2">
@@ -153,9 +153,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Address from '../components/Address.vue';
 import mainUser from '../services/mainUser';
 
 export default Vue.extend({
+  components: {
+    Address,
+  },
   name: 'Edit',
   data() {
     return {
