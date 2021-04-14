@@ -12,8 +12,8 @@
       class="mb-2"
       small
       rounded
-      :disabled="isDisable(projectsList)"
       @click="save()"
+      v-on:keyup.enter="save()"
       >Adicionar Projeto</v-btn
     >
     <v-chip-group column>
@@ -55,12 +55,10 @@ export default Vue.extend({
     }
   },
   methods: {
-    isDisable(projectsList: []) {
-      return projectsList.length < 0;
-    },
     save() {
-      if (this.form.validate()) {
+      if (this.project.length > 0) {
         this.projectsList.push(this.project);
+        console.log(this.projectsList);
         this.form.reset();
         this.saveStorage();
       }
