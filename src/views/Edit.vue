@@ -171,12 +171,22 @@ export default Vue.extend({
     };
   },
   mounted() {
-    mainUser.getUser().then((response) => {
-      this.userProfile = response.data.results;
-      console.log(this.userProfile);
-    }).catch((error) => {
-      console.log(error);
-    });
+    this.getUser();
+  },
+  methods: {
+    getUser() {
+      mainUser.getUser().then((response) => {
+        this.userProfile = response.data.results;
+        console.log(this.userProfile);
+      }).catch((error) => {
+        this.errorHandler();
+        console.log(error);
+      });
+    },
+    errorHandler() {
+      alert('Ops, algo deu errado. Tente atualizar a página!');
+    },
   },
 });
+
 </script>
