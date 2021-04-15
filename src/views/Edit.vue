@@ -2,7 +2,7 @@
     <div>
       <div class="top" v-for="user of userProfile" :key="user.id">
         <v-avatar size="80" style="position: absolute; top: -35px; left: 45px;">
-          <img v-bind:src="user.picture.medium" alt="user profile pic" />
+          <img v-bind:src="sourceImg ? sourceImg : user.picture.medium " alt="user profile pic" />
         </v-avatar>
         <h2 class="font-weight-light pt-13 pb-10 px-8"
           :style="{ color: $vuetify.theme.themes.light.subtitles }"
@@ -57,6 +57,7 @@
                   <v-icon>mdi-map-marker</v-icon>
                   {{ user.location.country }}
                 </p>
+                <new-picture :results="results" @image:update="imageUpdate" />
               </div>
               <v-divider vertical></v-divider>
               <div class="contato">
@@ -154,9 +155,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import mainUser from '../services/mainUser';
+import PictureUpdate from '../components/PictureUpload.vue';
 
 export default Vue.extend({
   name: 'Edit',
+  components: {
+    'new-picture': PictureUpdate,
+  },
   data() {
     return {
       userProfile: [],
@@ -168,6 +173,7 @@ export default Vue.extend({
         { tag: '#degree', title: 'Universidade e formação' },
         { tag: '#hobbies', title: 'Interesses e hobbies' },
       ],
+      sourceImg: '',
     };
   },
   mounted() {
@@ -177,7 +183,6 @@ export default Vue.extend({
     getUser() {
       mainUser.getUser().then((response) => {
         this.userProfile = response.data.results;
-        console.log(this.userProfile);
       }).catch((error) => {
         this.errorHandler();
         console.log(error);
@@ -185,6 +190,9 @@ export default Vue.extend({
     },
     errorHandler() {
       alert('Ops, algo deu errado. Tente atualizar a página!');
+    },
+    imageUpdate(url) {
+      this.sourceImg = url;
     },
   },
 });
