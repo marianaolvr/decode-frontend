@@ -183,7 +183,6 @@ export default Vue.extend({
     getUser() {
       mainUser.getUser().then((response) => {
         this.userProfile = response.data.results;
-        console.log(this.userProfile);
       }).catch((error) => {
         this.errorHandler();
         console.log(error);

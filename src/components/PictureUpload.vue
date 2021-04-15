@@ -68,7 +68,6 @@ export default Vue.extend({
     },
     prepareFormData() {
       this.formData = new FormData();
-      console.log(this.formData);
       this.formData.append('upload_preset', this.preset);
       this.formData.append('tags', this.tags);
       this.formData.append('file', this.fileContents);
