@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <v-list id="other-users" color="transparent">
         <v-list-item link to="/user">
           <v-avatar size="30" class="mr-5">
