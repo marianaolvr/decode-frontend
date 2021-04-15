@@ -35,22 +35,21 @@
       </div>
     </v-form>
 
-    <section v-if="results && results.secure_url">
-      <img :src="results.secure_url" :alt="results.public_id" />
-    </section>
-
   </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios';
 import Vue from 'vue';
+import eventBus from '../EventBus';
 
 export default Vue.extend({
-  name: 'PictureUpload',
+  name: 'new-picture',
+  props: {
+    results: Object,
+  },
   data() {
     return {
-      results: null,
       errors: [],
       file: null,
       filesSelected: 0,
@@ -91,6 +90,8 @@ export default Vue.extend({
           .then((response) => {
             this.results = response.data;
             this.loading = false;
+            this.$emit('image:update', this.results.secure_url);
+            eventBus.$emit('image:update', this.results.secure_url);
           })
           .catch((error) => {
             this.errorHandler();

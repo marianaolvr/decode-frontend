@@ -5,7 +5,7 @@
         <v-list-item link to="/user">
           <v-avatar size="30" class="mr-5">
             <img
-              :src="profilePicture"
+              :src="newProfilePicture ? newProfilePicture : profilePicture"
               :alt="userName" />
           </v-avatar>
         <v-list-item-content>
@@ -59,6 +59,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import eventBus from '@/EventBus';
 import usersService from '../services/usersService';
 import mainUser from '../services/mainUser';
 
@@ -69,7 +70,13 @@ export default Vue.extend({
       usersList: [],
       profilePicture: '',
       userName: '',
+      newProfilePicture: '',
     };
+  },
+  created() {
+    eventBus.$on('image:update', (src) => {
+      this.newProfilePicture = src;
+    });
   },
   mounted() {
     this.getUsers();
