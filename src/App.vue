@@ -1,7 +1,12 @@
 <template>
   <v-app id="app">
 
-    <v-app-bar clipped-left app :style="{ background: $vuetify.theme.themes.light.header }">
+    <v-app-bar
+      clipped-left
+      app
+      :collapse="!collapseOnScroll"
+      :collapse-on-scroll="collapseOnScroll"
+      :style="{ background: $vuetify.theme.themes.light.header }">
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
         :style="{ color: $vuetify.theme.themes.light.background }"
@@ -42,14 +47,20 @@ main {
 }
 </style>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import SideBar from '@/components/SideBar.vue';
 
-export default {
-  data: () => ({ drawer: null }),
+export default Vue.extend({
+  data() {
+    return {
+      drawer: null,
+      collapseOnScroll: true,
+    };
+  },
 
   components: {
     SideBar,
   },
-};
+});
 </script>

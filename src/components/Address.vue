@@ -32,12 +32,21 @@
     </v-text-field>
 
     <v-btn
+      :v-if="alert"
       color="primary"
       class="my-2"
       small
       rounded
       @click="save()">Salvar
     </v-btn>
+    <v-alert
+      v-model="alert"
+      dismissible
+      text
+     type="success"
+    >Endereço salvo com sucesso!
+    </v-alert>
+
   </v-form>
 </template>
 
@@ -49,6 +58,7 @@ export default Vue.extend({
   name: 'Address',
   data() {
     return {
+      alert: false,
       valid: true,
       cep: '',
       cepRules: [(v: '') => v.length > 8 || 'CPF incompleto'],
@@ -90,6 +100,7 @@ export default Vue.extend({
         localStorage.street = this.street;
         localStorage.number = this.number;
         localStorage.city = this.city;
+        this.alert = true;
       }
     },
     errorHandler() {

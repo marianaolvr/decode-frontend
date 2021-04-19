@@ -1,19 +1,25 @@
 <template>
-    <div>
-      <div class="top" v-for="user of userProfile" :key="user.id">
-        <v-avatar size="80" style="position: absolute; top: -35px; left: 45px;">
-          <img v-bind:src="sourceImg ? sourceImg : user.picture.medium " alt="user profile pic" />
-        </v-avatar>
-        <h2 class="font-weight-light pt-13 pb-10 px-8"
-          :style="{ color: $vuetify.theme.themes.light.subtitles }"
-        ><a text-decoration-none
-        :style="{ color: $vuetify.theme.themes.light.subtitles }">
-        {{ user.name.first }}
-        </a><strong><v-icon>mdi-chevron-right</v-icon>Editar Perfil</strong></h2>
+    <div class="container">
+    <div class="top" v-for="user of userProfile" :key="user.id">
+      <v-avatar size="80" style="position: absolute; top: -35px; left: 45px;">
+        <img v-bind:src="sourceImg ? sourceImg : user.picture.medium " alt="user profile pic" />
+      </v-avatar>
+      <div class="name-header">
+        <h2>
+          {{ user.name.first }}
+          <strong>
+            <v-icon>
+              mdi-chevron-right
+            </v-icon>
+            Editar Perfil
+          </strong>
+        </h2>
       </div>
+    </div>
+<div class="content">
       <v-row class="d-flex">
         <v-col md="4" class="nav d-flex justify-end">
-          <v-navigation-drawer>
+          <v-navigation-drawer mobile-breakpoint="0">
             <v-navigation-content>
               <v-list class="text-right">
                 <v-list-item-group color="primary">
@@ -32,8 +38,13 @@
         </v-col>
 
         <v-col md="6" class="content">
-
-          <v-card elevation="0" id="contact" v-for="user of userProfile" :key="user.id">
+<v-card class="scroll">
+          <v-card
+            elevation="1"
+            id="contact"
+            v-for="user of userProfile"
+            :key="user.id"
+            class="pa-5">
             <div class="d-flex align-center">
               <v-avatar size="40" color="primary" class="mr-2">
                 <v-icon
@@ -42,7 +53,7 @@
               </v-avatar>
               <h2 class="font-weight-thin">Informações de Contato</h2>
             </div>
-            <div class="d-flex justify-space-around">
+            <div>
               <div class="infos">
                 <h4 class="subtitle-1 my-3"
                 :style="{ color: $vuetify.theme.themes.light.subtitles }"
@@ -72,7 +83,7 @@
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0" id="about">
+            <v-card elevation="1" id="about" class="pa-5">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -81,23 +92,26 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Sobre mim</h2>
               </div>
-              <div class="my-10">
-                <label :style="{ color: $vuetify.theme.themes.light.text }">
-                  Um pouco sobre mim
-                </label>
-                <v-textarea
-                    solo
-                    name="about"
-                    class="mt-5"
-                  ></v-textarea>
-                  <v-btn elevation="2" small rounded color="primary" class="mr-3">Salvar</v-btn>
-                  <v-btn elevation="2" small rounded color="primary">Cancelar</v-btn>
+              <About />
+            </v-card>
+
+        <v-divider class="my-2"></v-divider>
+
+            <v-card elevation="1" id="address" class="pa-5">
+              <div class="d-flex infos align-center">
+                <v-avatar size="40" color="primary" class="mr-2">
+                  <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
+                    mdi-map-marker
+                  </v-icon>
+                </v-avatar>
+                <h2 class="font-weight-thin">Endereço</h2>
               </div>
+              <Address />
             </v-card>
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0" id="projects">
+            <v-card elevation="1" id="projects" class="pa-5">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -106,11 +120,12 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Projetos</h2>
               </div>
+              <Projects />
             </v-card>
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0" id="experiences">
+            <v-card elevation="1" id="experiences" class="pa-5">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -119,11 +134,12 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Habilidades e experiência</h2>
               </div>
+              <Skills />
             </v-card>
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0" id="degree">
+            <v-card elevation="1" id="degree" class="pa-5">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -132,11 +148,12 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Universidade e formação</h2>
               </div>
+              <Education />
             </v-card>
 
             <v-divider class="my-2"></v-divider>
 
-            <v-card elevation="0" id="hobbies">
+            <v-card elevation="1" id="hobbies" class="pa-5">
               <div class="d-flex infos align-center">
                 <v-avatar size="40" color="primary" class="mr-2">
                   <v-icon :style="{ color: $vuetify.theme.themes.light.background }">
@@ -145,22 +162,37 @@
                 </v-avatar>
                 <h2 class="font-weight-thin">Interesses e hobbies</h2>
               </div>
+              <Hobbies />
             </v-card>
-
+                    </v-card>
         </v-col>
+
       </v-row>
+      </div>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import mainUser from '../services/mainUser';
-import PictureUpdate from '../components/PictureUpload.vue';
+import mainUser from '@/services/mainUser';
+import PictureUpdate from '@/components/PictureUpload.vue';
+import About from '@/components/About.vue';
+import Address from '@/components/Address.vue';
+import Education from '@/components/Education.vue';
+import Hobbies from '@/components/Hobbies.vue';
+import Projects from '@/components/Projects.vue';
+import Skills from '@/components/Skills.vue';
 
 export default Vue.extend({
   name: 'Edit',
   components: {
     'new-picture': PictureUpdate,
+    About,
+    Address,
+    Education,
+    Hobbies,
+    Projects,
+    Skills,
   },
   data() {
     return {
@@ -168,6 +200,7 @@ export default Vue.extend({
       sections: [
         { tag: '#contact', title: 'Informações de contato' },
         { tag: '#about', title: 'Sobre mim' },
+        { tag: '#address', title: 'Endereço' },
         { tag: '#projects', title: 'Projetos' },
         { tag: '#experiences', title: 'Habilidades e experiência' },
         { tag: '#degree', title: 'Universidade e formação' },
@@ -198,3 +231,33 @@ export default Vue.extend({
 });
 
 </script>
+
+<style scoped>
+
+.scroll {
+  overflow-y: scroll;
+  height: 60vh;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px
+}
+
+.name-header{
+  margin-top: 20px;
+}
+
+.name-header h2 {
+  color: #1E88E5;
+  font-weight: normal;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+</style>
