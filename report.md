@@ -26,7 +26,7 @@ Apenas especificar mais no começo do projeto que não é preciso seguir a risca
 já que não há um Figma ou XD para seguir. **Ressalto que essa questão foi prontamente respondida quando perguntada nos encontros de mentoria**, comento apenas como possibilidade de incluir esse detalhe no readme do projeto ou na conversa inicial.
 
 ### Depoimento pessoal:
-Desenvolvi o projeto durante 6 dias contando com 3 encontros para tirar dúvidas com Cristofer Souza, meu mentor.
+Desenvolvi o projeto durante 6 dias contando com 3 encontros para tirar dúvidas com Cristofer Sousa, meu mentor.
 Esses encontros acabaram não sendo apenas técnicos, mas também muito eficientes para eu conhecer um pouco mais sobre o dia a dia, os desafios e a cultura da empresa e do time do qual eu viria a fazer parte. 
 
 Apesar da correria de dividir o tempo de codar o projeto com a rotina de trabalho, gostei muito de ter essa etapa de mentoria dentro de um processo seletivo, justamente para entender e conhecer melhor a empresa e o time e, claro, para saber se o match seria recíproco (:
