@@ -8,7 +8,7 @@
 https://github.com/cristofer-sousa-movile/decode-frontend
 
 **Funcionalidades implementadas**  
-Edição de informações do perfil, troca de imagem do avatar, pesquisa de endereço por CEP, consumo de usuários em API externa, dados no localStorage.
+Edição de informações do perfil, troca de imagem do avatar, pesquisa de endereço por CEP, consumo de usuários em API externa e armazenar os dados no localStorage.
 
 ### Principais aprendizados:
 - Vue
