@@ -222,9 +222,10 @@ export default Vue.extend({
       });
     },
     errorHandler() {
+      // eslint-disable-next-line no-alert
       alert('Ops, algo deu errado. Tente atualizar a página!');
     },
-    imageUpdate(url) {
+    imageUpdate(url: string) {
       this.sourceImg = url;
     },
   },
