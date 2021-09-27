@@ -164,7 +164,7 @@
               </div>
               <Hobbies />
             </v-card>
-                    </v-card>
+          </v-card>
         </v-col>
 
       </v-row>
@@ -174,6 +174,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { User } from '@/services/Interface';
 import mainUser from '@/services/mainUser';
 import PictureUpdate from '@/components/PictureUpload.vue';
 import About from '@/components/About.vue';
@@ -196,7 +197,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      userProfile: [],
+      userProfile: {} as User,
       sections: [
         { tag: '#contact', title: 'Informações de contato' },
         { tag: '#about', title: 'Sobre mim' },

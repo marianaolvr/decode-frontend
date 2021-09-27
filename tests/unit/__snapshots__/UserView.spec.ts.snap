@@ -1,43 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserView renders the component 1`] = `
-<div>
-  <div class="row d-flex">
-    <div class="nav d-flex justify-end col-md-4 col">
-      <aside class="v-navigation-drawer v-navigation-drawer--close v-navigation-drawer--is-mobile theme--light" style="height: 100%; top: 0px; transform: translateX(-100%); width: 256px;">
-        <div class="v-navigation-drawer__content">
-          <v-navigation-content>
-            <div role="list" class="v-list text-right v-sheet theme--light">
-              <div role="listbox" class="v-item-group theme--light v-list-item-group primary--text">
-                <div tabindex="0" role="option" aria-selected="false" class="v-list-item v-list-item--link theme--light">
-                  <div class="v-list-item__content">
-                    <div class="v-list-item__title"><a href="#contact" class="text-decoration-none"><strong>Informações de Contato</strong></a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </v-navigation-content>
-        </div>
-        <div class="v-navigation-drawer__border"></div>
-      </aside>
-    </div>
-    <div class="content col-md-6 col">
-      <hr role="separator" aria-orientation="horizontal" class="my-2 v-divider theme--light">
-      <div class="mb-16 v-card v-sheet theme--light elevation-0" id="about">
-        <div class="d-flex infos align-center">
-          <div class="v-avatar mr-2 primary" style="height: 40px; min-width: 40px; width: 40px;"><i aria-hidden="true" class="v-icon notranslate mdi mdi-format-quote-close theme--light"></i></div>
-          <h2 class="font-weight-thin">Sobre mim</h2>
-        </div>
-        <div class="my-5">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Similique sed blanditiis excepturi harum. Expedita nulla odio fugit nam,
-            perspiciatis obcaecati impedit facere nihil repudiandae nesciunt
-            consectetur ipsam sed commodi consequatur.
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <div class="content">
+    <div class="title"><a href="#contact" class="text-decoration-none"><strong>
+          Informações de Contato
+        </strong></a></div>
+    <hr role="separator" aria-orientation="vertical" class="v-divider v-divider--vertical theme--light">
+    <div class="content-card"></div>
   </div>
 </div>
 `;

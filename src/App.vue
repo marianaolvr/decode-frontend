@@ -40,13 +40,6 @@
   </v-app>
 </template>
 
-<style>
-main {
-  background-image: url('./assets/wallpaper.png');
-  background-size: cover;
-}
-</style>
-
 <script lang="ts">
 import Vue from 'vue';
 import SideBar from '@/components/SideBar.vue';
@@ -58,9 +51,15 @@ export default Vue.extend({
       collapseOnScroll: true,
     };
   },
-
   components: {
     SideBar,
   },
 });
 </script>
+
+<style>
+main {
+  background-image: url('./assets/wallpaper.png');
+  background-size: cover;
+}
+</style>
