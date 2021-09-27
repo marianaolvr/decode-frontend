@@ -72,13 +72,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { User } from '@/services/Interface';
 import mainUser from '../services/mainUser';
 
 export default Vue.extend({
   name: 'User',
   data() {
     return {
-      userProfile: [],
+      userProfile: {} as User,
     };
   },
   mounted() {
